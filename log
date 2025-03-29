@@ -86,3 +86,17 @@ Fri, Mar 28, 2025 11:45:22 PM:
  tests:  11|1
 total_score: 55/70
 0d4dcac
+Fri, Mar 28, 2025 11:59:52 PM: 
+ list.c | 20 +++++++++++++++++++-
+ 1 file changed, 19 insertions(+), 1 deletion(-)
+In file included from test.c:5:0:
+list.c: In function 'popCurrent':
+list.c:152:33: error: 'return' with no value, in function returning non-void [-Werror]
+     if (list->current == NULL ) return;
+                                 ^~~~~~
+list.c:150:8: note: declared here
+ void * popCurrent(List * list)
+        ^~~~~~~~~~
+cc1.exe: all warnings being treated as errors
+Compilation failed
+9ad0922
