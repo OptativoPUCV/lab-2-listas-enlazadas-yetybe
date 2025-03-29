@@ -154,10 +154,32 @@ void * popCurrent(List * list)
     {
         Node * nodoTarget = list->current;
         void * data = nodoTarget->data;
-        Node * izq = list->current->prev;
-        Node * der = list->current->next;
-        izq->next = der;
-        der->prev = izq;
+        if (nodoTarget == list->head && nodoTarget == list->tail) 
+        {
+            list->head = NULL;
+            list->tail = NULL;
+        }
+
+        else if (nodoTarget == list->head) 
+        {
+            list->head = nodoTarget->next;
+            list->head->prev = NULL;
+        }
+        
+        else if (nodoTarget == list->tail) 
+        {
+            list->tail = nodoTarget->prev;
+            list->tail->next = NULL;
+        }
+        
+        else
+        {
+            Node * izq = list->current->prev;
+            Node * der = list->current->next;
+            izq->next = der;
+            der->prev = izq;
+        }
+        
         list->current = nodoTarget->next;
         free(nodoTarget); 
         return data;
